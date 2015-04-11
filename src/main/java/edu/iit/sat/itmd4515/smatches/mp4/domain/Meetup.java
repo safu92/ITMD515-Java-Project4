@@ -15,6 +15,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -29,13 +31,35 @@ public class Meetup extends BaseEntity implements Serializable{
     public Meetup() {
     }
     
-       @OneToOne(mappedBy = "professor")
+       @OneToOne(mappedBy = "meetup")
         private Professor professor;
        
-        @ManyToMany(mappedBy = "students", cascade = CascadeType.PERSIST)
+        @ManyToMany(mappedBy = "meetups", cascade = CascadeType.PERSIST)
     private List<Student> students = new ArrayList<>();
        
+    @Temporal(TemporalType.DATE)
     private Date date;
+    
+        private String place;
+
+    /**
+     * Get the value of place
+     *
+     * @return the value of place
+     */
+    public String getPlace() {
+        return place;
+    }
+
+    /**
+     * Set the value of place
+     *
+     * @param place new value of place
+     */
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
 
     public Meetup(Professor professor, Date date, String topic) {
         this.professor = professor;
@@ -93,4 +117,12 @@ public class Meetup extends BaseEntity implements Serializable{
     
     
 
+     @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder(super.toString());
+        sb.append("\n\t");
+        sb.append("Meetup{topic=").append(topic).append('}');
+        return sb.toString();
+    }
+    
 }

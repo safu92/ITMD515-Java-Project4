@@ -17,7 +17,6 @@ import javax.persistence.OneToOne;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "Job.findByName", query = "select j from Job j where j.name = :name"),
     @NamedQuery(name = "Job.findById", query = "select j from Job j where j.id = :id"),
     @NamedQuery(name = "Job.findAll", query = "select j from Job j")})
 public class Job extends BaseEntity implements Serializable {
@@ -25,9 +24,10 @@ public class Job extends BaseEntity implements Serializable {
     public Job() {
     }
     
-       @OneToOne(mappedBy = "student")
+       @OneToOne
         private Student student;
     
+       
     private String jobArea;
 
     public Job(Student student, String jobArea) {
@@ -55,4 +55,12 @@ public class Job extends BaseEntity implements Serializable {
         this.jobArea = jobArea;
     }
 
+     @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder(super.toString());
+        sb.append("\n\t");
+        sb.append("Job{area=").append(jobArea).append('}');
+        return sb.toString();
+    }
+    
 }

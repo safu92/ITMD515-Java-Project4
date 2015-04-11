@@ -87,4 +87,12 @@ public class University extends BaseEntity implements Serializable {
     }
 
     
+     @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder(super.toString());
+        sb.append("\n\t");
+        sb.append("University{name=").append(name).append('}');
+        return sb.toString();
+    }
+    
 }

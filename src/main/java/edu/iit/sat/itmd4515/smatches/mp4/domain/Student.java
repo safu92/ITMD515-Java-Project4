@@ -5,6 +5,7 @@
  */
 package edu.iit.sat.itmd4515.smatches.mp4.domain;
 
+import edu.iit.sat.itmd4515.smatches.mp4.domain.security.User;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,11 +25,26 @@ import javax.persistence.OneToOne;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "Student.findByName", query = "select s from Student s where s.name = :name"),
+    @NamedQuery(name = "Student.findByName", query = "select s from Student s where s.lastName = :lname"),
     @NamedQuery(name = "Student.findById", query = "select s from Student s where s.id = :id"),
-    @NamedQuery(name = "Student.findAll", query = "select s from Student s")})
+    @NamedQuery(name = "Student.findAll", query = "select s from Student s"),
+    @NamedQuery(name = "Student.findByUsername", query = "select s from Student s where s.user.userName = :username")})
 public class Student extends Person implements Serializable {
 
+    @OneToOne
+    @JoinColumn(name = "USERNAME")
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+    
+    
+    
     @ManyToOne
     @JoinColumn(name = "UNIVERSITY_ID")
     private University university;
@@ -46,7 +62,7 @@ public class Student extends Person implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "meetup_id"))
     private List<Meetup> meetups = new ArrayList<>();
     
-    @OneToOne
+    @OneToOne(mappedBy = "student")
     private Job job;
      
      public Student() {
@@ -102,7 +118,6 @@ public class Student extends Person implements Serializable {
     public void setMajor(String major) {
         this.major = major;
     }
-
     
     
 }

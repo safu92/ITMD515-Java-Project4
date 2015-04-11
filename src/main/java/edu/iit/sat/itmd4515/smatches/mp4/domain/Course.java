@@ -30,19 +30,23 @@ public class Course extends BaseEntity implements Serializable {
     public Course() {
     }
     
-    @ManyToMany(mappedBy = "students", cascade = CascadeType.PERSIST)
+    @ManyToMany(mappedBy = "courses", cascade = CascadeType.PERSIST)
     private List<Student> students = new ArrayList<>();
     
-       @OneToOne(mappedBy = "course")
-        private Professor professor;
     
-        private String courseName;
+    @ManyToMany(mappedBy = "courses", cascade = CascadeType.PERSIST)
+    private List<Professor> professors = new ArrayList<>();
+    
+     
+       
+       
+    
+        private String name;
 
-    public Professor getProfessor() {
-        return professor;
+    public List<Professor> getProfessors() {
+        return professors;
     }
 
-    
         
         
 
@@ -56,17 +60,17 @@ public class Course extends BaseEntity implements Serializable {
      *
      * @return the value of courseName
      */
-    public String getCourseName() {
-        return courseName;
+    public String getName() {
+        return name;
     }
 
     /**
      * Set the value of courseName
      *
-     * @param courseName new value of courseName
+     * @param name new value of name
      */
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     private String courseTerm;
@@ -109,12 +113,18 @@ public class Course extends BaseEntity implements Serializable {
         this.courseId = courseId;
     }
 
-    public Course(Professor professor, String courseName, String courseTerm, String courseId) {
-        this.professor = professor;
-        this.courseName = courseName;
+    public Course(String name, String courseTerm, String courseId) {
+        this.name = name;
         this.courseTerm = courseTerm;
         this.courseId = courseId;
     }
 
     
+     @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder(super.toString());
+        sb.append("\n\t");
+        sb.append("Course{name=").append(name).append('}');
+        return sb.toString();
+    }
 }
