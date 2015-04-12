@@ -6,6 +6,7 @@
 package edu.iit.sat.itmd4515.sspyriso.mp4.service;
 
 import edu.iit.sat.itmd4515.smatches.mp4.domain.Course;
+import edu.iit.sat.itmd4515.smatches.mp4.domain.Meetup;
 import edu.iit.sat.itmd4515.smatches.mp4.domain.Professor;
 import edu.iit.sat.itmd4515.smatches.mp4.domain.Student;
 import edu.iit.sat.itmd4515.smatches.mp4.domain.University;
@@ -13,6 +14,7 @@ import edu.iit.sat.itmd4515.smatches.mp4.domain.security.Group;
 import edu.iit.sat.itmd4515.smatches.mp4.domain.security.User;
 import edu.iit.sat.itmd4515.smatches.mp4.service.CourseService;
 import edu.iit.sat.itmd4515.smatches.mp4.service.GroupService;
+import edu.iit.sat.itmd4515.smatches.mp4.service.MeetupService;
 import edu.iit.sat.itmd4515.smatches.mp4.service.ProfessorService;
 import edu.iit.sat.itmd4515.smatches.mp4.service.StudentService;
 import edu.iit.sat.itmd4515.smatches.mp4.service.UniversityService;
@@ -54,6 +56,9 @@ public class DatabasePopulator {
     @EJB
     private UniversityService universityService;
     
+    @EJB
+    private MeetupService meetupService;
+    
     public DatabasePopulator() {
     }
 
@@ -90,13 +95,31 @@ public class DatabasePopulator {
         University u1 = new University("Illinois", "Illinois Institute of Technology");
         University u2 = new University("California", "San Jose State University");
         
+        Meetup m1 = new Meetup(new GregorianCalendar(2015, 04, 04).getTime(), "Herman Hall", "JSP");
+        Meetup m2 = new Meetup(new GregorianCalendar(2015, 04, 01).getTime(), "Stuart Building", "Android SQLite");
+        Meetup m3 = new Meetup(new GregorianCalendar(2015, 04, 17).getTime(), "MTCC", "Javascript");
+        Meetup m4 = new Meetup(new GregorianCalendar(2015, 04, 23).getTime(), "Herman Hall", "iOS Beginner");
+        
+        
+        s1.getCourses().add(c1);
         c1.getStudents().add(s1);
+        s1.getCourses().add(c2);
         c2.getStudents().add(s2);
         
+        p1.getCourses().add(c2);
+        p2.getCourses().add(c1);
         c1.getProfessors().add(p1);
         c1.getProfessors().add(p2);
         
         s1.setUniversity(u1);
+        s2.setUniversity(u2);
+        p1.setUniversity(u1);
+        p2.setUniversity(u1);
+        p1.setMeetup(m1);
+        p2.setMeetup(m4);
+        
+        s1.getMeetups().add(m4);
+        s2.getMeetups().add(m1);
         
         groupService.create(student);
         groupService.create(professor);
@@ -120,6 +143,9 @@ public class DatabasePopulator {
         universityService.create(u1);
         universityService.create(u2);
                 
-        
+        meetupService.create(m1);
+        meetupService.create(m2);
+        meetupService.create(m3);
+        meetupService.create(m4);
     }
 }

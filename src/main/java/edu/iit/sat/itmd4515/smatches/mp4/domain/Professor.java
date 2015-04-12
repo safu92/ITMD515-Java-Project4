@@ -52,6 +52,16 @@ public class Professor extends Person implements Serializable {
     public Professor() {
     }
 
+    public Meetup getMeetup() {
+        return meetup;
+    }
+
+    public void setMeetup(Meetup meetup) {
+        this.meetup = meetup;
+    }
+
+    
+    
     public User getUser() {
         return user;
     }

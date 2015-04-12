@@ -60,15 +60,6 @@ public class Meetup extends BaseEntity implements Serializable{
         this.place = place;
     }
 
-
-    public Meetup(Professor professor, Date date, String topic) {
-        this.professor = professor;
-        this.date = date;
-        this.topic = topic;
-    }
-
-    
-    
     /**
      * Get the value of date
      *
@@ -88,6 +79,21 @@ public class Meetup extends BaseEntity implements Serializable{
     }
 
     private String topic;
+
+    public Meetup(Date date, String place, String topic) {
+        this.date = date;
+        this.place = place;
+        this.topic = topic;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+    
 
     /**
      * Get the value of topic
