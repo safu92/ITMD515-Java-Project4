@@ -118,6 +118,12 @@ public class Student extends Person implements Serializable {
     public void setMajor(String major) {
         this.major = major;
     }
+
+    public Student(String major, Date birthDate, String firstName, String lastName) {
+        super(birthDate, firstName, lastName);
+        this.major = major;
+    }
+
     
     
 }

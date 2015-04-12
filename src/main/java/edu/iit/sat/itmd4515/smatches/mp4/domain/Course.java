@@ -36,6 +36,10 @@ public class Course extends BaseEntity implements Serializable {
     
     @ManyToMany(mappedBy = "courses", cascade = CascadeType.PERSIST)
     private List<Professor> professors = new ArrayList<>();
+
+    public void setProfessors(List<Professor> professors) {
+        this.professors = professors;
+    }
     
      
        
@@ -73,25 +77,6 @@ public class Course extends BaseEntity implements Serializable {
         this.name = name;
     }
 
-    private String courseTerm;
-
-    /**
-     * Get the value of courseTerm
-     *
-     * @return the value of courseTerm
-     */
-    public String getCourseTerm() {
-        return courseTerm;
-    }
-
-    /**
-     * Set the value of courseTerm
-     *
-     * @param courseTerm new value of courseTerm
-     */
-    public void setCourseTerm(String courseTerm) {
-        this.courseTerm = courseTerm;
-    }
 
     private String courseId;
 
@@ -113,9 +98,8 @@ public class Course extends BaseEntity implements Serializable {
         this.courseId = courseId;
     }
 
-    public Course(String name, String courseTerm, String courseId) {
+    public Course(String name, String courseId) {
         this.name = name;
-        this.courseTerm = courseTerm;
         this.courseId = courseId;
     }
 

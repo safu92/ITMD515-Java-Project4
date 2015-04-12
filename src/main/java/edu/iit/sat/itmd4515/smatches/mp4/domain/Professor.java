@@ -5,6 +5,7 @@
  */
 package edu.iit.sat.itmd4515.smatches.mp4.domain;
 
+import edu.iit.sat.itmd4515.smatches.mp4.domain.security.User;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,6 +30,10 @@ import javax.persistence.OneToOne;
     @NamedQuery(name = "Professor.findAll", query = "select p from Professor p")})
 public class Professor extends Person implements Serializable {
 
+      @OneToOne
+    @JoinColumn(name = "USERNAME")
+    private User user;
+    
     @ManyToOne
     @JoinColumn(name = "UNIVERSITY_ID")
     private University university;
@@ -43,9 +48,20 @@ public class Professor extends Person implements Serializable {
     @OneToOne
     private Meetup meetup;
     
+    
     public Professor() {
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    
+    
     public Professor(University university,Meetup meetup, Date birthDate, String firstName, String lastName) {
         super(birthDate, firstName, lastName);
         this.university = university;
@@ -67,6 +83,10 @@ public class Professor extends Person implements Serializable {
 
     public List<Course> getCourses() {
         return courses;
+    }
+
+    public Professor(Date birthDate, String firstName, String lastName) {
+        super(birthDate, firstName, lastName);
     }
 
     
