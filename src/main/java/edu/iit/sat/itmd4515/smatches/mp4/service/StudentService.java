@@ -46,7 +46,7 @@ public class StudentService {
     }
 
     public Student findByUsername(String userName) {
-        return em.createNamedQuery("Student.findByName",
+        return em.createNamedQuery("Student.findByUsername",
                 Student.class)
                 .setParameter("username", userName)
                 .getSingleResult();

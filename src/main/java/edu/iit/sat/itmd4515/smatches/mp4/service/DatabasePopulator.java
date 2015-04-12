@@ -104,7 +104,9 @@ public class DatabasePopulator {
         s1.getCourses().add(c1);
         c1.getStudents().add(s1);
         s1.getCourses().add(c2);
-        c2.getStudents().add(s2);
+        c2.getStudents().add(s1);
+        s2.getCourses().add(c3);
+        c3.getStudents().add(s2);
         
         p1.getCourses().add(c2);
         p2.getCourses().add(c1);

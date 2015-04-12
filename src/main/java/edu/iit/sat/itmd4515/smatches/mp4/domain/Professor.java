@@ -27,7 +27,8 @@ import javax.persistence.OneToOne;
 @NamedQueries({
     @NamedQuery(name = "Professor.findByName", query = "select p from Professor p where p.lastName = :lname"),
     @NamedQuery(name = "Professor.findById", query = "select p from Professor p where p.id = :id"),
-    @NamedQuery(name = "Professor.findAll", query = "select p from Professor p")})
+    @NamedQuery(name = "Professor.findAll", query = "select p from Professor p"),
+@NamedQuery(name = "Professor.findByUsername", query = "select p from Professor p where p.user.userName = :username")})
 public class Professor extends Person implements Serializable {
 
       @OneToOne
