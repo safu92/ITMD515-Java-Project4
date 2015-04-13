@@ -21,7 +21,7 @@ import javax.persistence.OneToOne;
 
 /**
  *
- * @author ALLAH
+ * @author smatches
  */
 @Entity
 @NamedQueries({
@@ -49,53 +49,88 @@ public class Professor extends Person implements Serializable {
     @OneToOne
     private Meetup meetup;
     
-    
+    /**
+     * constructor
+     */
     public Professor() {
     }
 
+    /**
+     * get meetup method
+     * @return the value of the meetup
+     */
     public Meetup getMeetup() {
         return meetup;
     }
 
+    /**
+     * set meetup method
+     * @param meetup the value of the meetup object professor is attending
+     */
     public void setMeetup(Meetup meetup) {
         this.meetup = meetup;
     }
 
-    
-    
+    /**
+     * get user method
+     * @return the value of the user
+     */
     public User getUser() {
         return user;
     }
 
+    /**
+     * ser user method
+     * @param user the value of the user object
+     */
     public void setUser(User user) {
         this.user = user;
     }
 
-    
-    
+    /**
+     * constructor
+     * @param university the value of the university object
+     * @param meetup the value of the meetup object
+     * @param birthDate the birthdate of professor
+     * @param firstName the first name of professor
+     * @param lastName the last name of professor
+     */
     public Professor(University university,Meetup meetup, Date birthDate, String firstName, String lastName) {
         super(birthDate, firstName, lastName);
         this.university = university;
         this.meetup = meetup;
     }
     
-    
-   
-    
-
-    
+    /**
+     * get university method
+     * @return the value of the university of professor
+     */
     public University getUniversity() {
         return university;
     }
 
+    /**
+     * set university method
+     * @param university the value of university to set for the professor
+     */
     public void setUniversity(University university) {
         this.university = university;
     }
 
+    /**
+     * get courses method
+     * @return the list of courses
+     */
     public List<Course> getCourses() {
         return courses;
     }
 
+    /**
+     * constructor
+     * @param birthDate the value of the birthdate of professor
+     * @param firstName the first name of professor
+     * @param lastName the last name of professor
+     */
     public Professor(Date birthDate, String firstName, String lastName) {
         super(birthDate, firstName, lastName);
     }

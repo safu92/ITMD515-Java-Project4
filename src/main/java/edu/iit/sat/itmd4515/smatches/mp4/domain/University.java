@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 
 /**
  *
- * @author ALLAH
+ * @author smatches
  */
 @Entity
 @NamedQueries({
@@ -30,19 +30,35 @@ public class University extends BaseEntity implements Serializable {
     @OneToMany(mappedBy = "university")
     private List<Professor> professors = new ArrayList<>();
 
+    /**
+     * constructor
+     * @param state the state the university is in
+     * @param name the name of the university
+     */
     public University(String state, String name) {
         this.state = state;
         this.name = name;
     }
 
+    /**
+     * get student method
+     * @return the list of students
+     */
     public List<Student> getStudents() {
         return students;
     }
 
+    /**
+     * get professors method
+     * @return the list of professors
+     */
     public List<Professor> getProfessors() {
         return professors;
     }
     
+    /**
+     * constructor
+     */
     public University() {
     }
     

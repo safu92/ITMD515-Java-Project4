@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author spyrisos
+ * @author smatches
  */
 @MappedSuperclass
 public class BaseEntity {
@@ -29,6 +29,9 @@ public class BaseEntity {
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdated;
 
+    /**
+     * Constructor
+     */
     public BaseEntity() {
     }
 
@@ -38,6 +41,10 @@ public class BaseEntity {
         lastUpdated = GregorianCalendar.getInstance().getTime();
     }
 
+    /**
+     * get id method
+     * @return
+     */
     public Long getId() {
         return id;
     }

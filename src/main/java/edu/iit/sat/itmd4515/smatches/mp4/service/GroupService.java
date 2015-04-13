@@ -11,15 +11,22 @@ import javax.ejb.Stateless;
 
 /**
  *
- * @author spyrisos
+ * @author smatches
  */
 @Stateless
 public class GroupService extends AbstractService<Group>{
 
+    /**
+     * constructor
+     */
     public GroupService() {
         super(Group.class);
     }
 
+    /**
+     * find all method which finds all the groups
+     * @return
+     */
     @Override
     public List<Group> findAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

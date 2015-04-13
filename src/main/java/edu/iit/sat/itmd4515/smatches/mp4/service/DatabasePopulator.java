@@ -29,7 +29,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author spyrisos
+ * @author smatches
  */
 @Singleton
 @Startup
@@ -59,9 +59,13 @@ public class DatabasePopulator {
     @EJB
     private MeetupService meetupService;
     
+    /**
+     *constructor
+     */
     public DatabasePopulator() {
     }
 
+    //the method to fill the data in the database
     @PostConstruct
     private void seedDatabase() {
 

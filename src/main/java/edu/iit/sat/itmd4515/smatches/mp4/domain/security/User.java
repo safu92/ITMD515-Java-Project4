@@ -21,7 +21,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  *
- * @author spyrisos
+ * @author smatches
  */
 @Entity
 @Table(name = "sec_user")
@@ -41,14 +41,26 @@ public class User implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "GROUPNAME"))
     private List<Group> groups = new ArrayList<>();
 
+    /**
+     * constructor
+     * @param userName the username of the user
+     * @param password the password of the user
+     */
     public User(String userName, String password) {
         this.userName = userName;
         this.password = password;
     }
 
+    /**
+     * constructor
+     */
     public User() {
     }
 
+    /**
+     * add group method
+     * @param g value of group object to add to user and vice versa
+     */
     public void addGroup(Group g) {
         if (!this.groups.contains(g)) {
             this.groups.add(g);
@@ -58,6 +70,10 @@ public class User implements Serializable {
         }
     }
 
+    /**
+     * set enabled method
+     * @param enabled value of enabled which can be true or false
+     */
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
@@ -98,14 +114,23 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    /**
+     * get groups method
+     * @return the value of the groups as a list of group object
+     */
     public List<Group> getGroups() {
         return groups;
     }
 
+    /**
+     * set groups method
+     * @param groups the value of the groups as a list of group objects to set for the user
+     */
     public void setGroups(List<Group> groups) {
         this.groups = groups;
     }
 
+    //hashing password method
     @PrePersist
     @PreUpdate
     private void hashPassword(){
@@ -113,6 +138,10 @@ public class User implements Serializable {
         this.password = digestPassword;
     }
 
+    /**
+     * is enabled method 
+     * @return the value of the enabled
+     */
     public Boolean isEnabled() {
         return enabled;
     }

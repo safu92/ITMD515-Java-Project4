@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author spyrisos
+ * @author smatches
  */
 @WebServlet(name = "ProfessorPortalTestServlet", urlPatterns = {"/professorPortal", "/professorPortal/"})
 public class ProfessorPortalTestServlet extends HttpServlet {
@@ -39,6 +39,7 @@ public class ProfessorPortalTestServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        //get all the details of the professor and print them and also show which courses do they teach
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");

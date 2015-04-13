@@ -11,20 +11,32 @@ import javax.ejb.Stateless;
 
 /**
  *
- * @author spyrisos
+ * @author smatches
  */
 @Stateless
 public class ProfessorService extends AbstractService<Professor> {
 
+    /**
+     * constructor
+     */
     public ProfessorService() {
         super(Professor.class);
     }
 
+    /**
+     * find all method which finds all the professors
+     * @return
+     */
     @Override
     public List<Professor> findAll() {
         return getEntityManager().createNamedQuery("Professor.findAll",Professor.class).getResultList();
     }
 
+    /**
+     * find by username method
+     * @param username value of the username
+     * @return finds the professor which matches the username passed
+     */
     public Professor findByUsername(String username) {
         return getEntityManager().createNamedQuery("Professor.findByUsername",Professor.class).setParameter("username", username).getSingleResult();
     }

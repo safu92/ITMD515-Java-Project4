@@ -11,15 +11,22 @@ import javax.ejb.Stateless;
 
 /**
  *
- * @author spyrisos
+ * @author smatches
  */
 @Stateless
 public class CourseService extends AbstractService<Course> {
 
+    /**
+     *constructor
+     */
     public CourseService() {
         super(Course.class);
     }
 
+    /**
+     *find all method which finds all courses
+     * @return
+     */
     @Override
     public List<Course> findAll() {
         return getEntityManager().createNamedQuery("Course.findAll").getResultList();

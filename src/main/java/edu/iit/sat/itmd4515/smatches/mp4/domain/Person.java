@@ -12,24 +12,42 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author spyrisos
+ * @author smatches
  */
 @MappedSuperclass
 public abstract class Person extends BaseEntity {
 
+    /**
+     *temporal date type birthdate
+     */
     @Temporal(TemporalType.DATE)
     protected Date birthDate;
+
+    /**
+     * string value of first name
+     */
     protected String firstName;
+
+    /**
+     * string value of last name
+     */
     protected String lastName;
 
-    
-    
+    /**
+     * constructor
+     * @param birthDate the value of the birthdate of the person
+     * @param firstName the value of the first name of the person
+     * @param lastName the value of the last name of the person
+     */
     public Person(Date birthDate, String firstName, String lastName) {
         this.birthDate = birthDate;
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
+    /**
+     * constructor
+     */
     public Person() {
     }
 
@@ -70,10 +88,18 @@ public abstract class Person extends BaseEntity {
         this.firstName = firstName;
     }
 
+    /**
+     * get method
+     * @return the value of the last name
+     */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     * set method
+     * @param lastName the value of the lastname of the person
+     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }

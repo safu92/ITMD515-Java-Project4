@@ -21,7 +21,7 @@ import javax.persistence.OneToOne;
 
 /**
  *
- * @author ALLAH
+ * @author smatches
  */
 @Entity
 @NamedQueries({
@@ -35,10 +35,18 @@ public class Student extends Person implements Serializable {
     @JoinColumn(name = "USERNAME")
     private User user;
 
+    /**
+     * get user method
+     * @return the value of user
+     */
     public User getUser() {
         return user;
     }
 
+    /**
+     * set user method
+     * @param user the value of user object
+     */
     public void setUser(User user) {
         this.user = user;
     }
@@ -65,37 +73,64 @@ public class Student extends Person implements Serializable {
     @OneToOne(mappedBy = "student")
     private Job job;
      
-     public Student() {
+    /**
+     * constructor
+     */
+    public Student() {
     }
     
     private String major;
 
+    /**
+     * get courses method
+     * @return the value of all the courses taken by that student
+     */
     public List<Course> getCourses() {
         return courses;
     }
 
-    
-    
+    /**
+     * constructor
+     * @param university the name of university student is attending
+     * @param major the major of the student
+     * @param birthDate the birthdate of student
+     * @param firstName the first name of the student
+     * @param lastName the last name of the student
+     */
     public Student(University university, String major, Date birthDate, String firstName, String lastName) {
         super(birthDate, firstName, lastName);
         this.university = university;
         this.major = major;
     }
 
+    /**
+     * get meetup method
+     * @return the value of list of meetup object
+     */
     public List<Meetup> getMeetups() {
         return meetups;
     }
 
+    /**
+     * get job method
+     * @return the job of the student
+     */
     public Job getJob() {
         return job;
     }
 
-    
-    
+    /**
+     *get university method
+     * @return the value of the university of student
+     */
     public University getUniversity() {
         return university;
     }
 
+    /**
+     * set university method
+     * @param university the value of the univeristy to set for the student
+     */
     public void setUniversity(University university) {
         this.university = university;
     }
@@ -119,6 +154,13 @@ public class Student extends Person implements Serializable {
         this.major = major;
     }
 
+    /**
+     * constructor
+     * @param major the major of student
+     * @param birthDate the birthdate of student
+     * @param firstName the first name of student
+     * @param lastName the last name of student
+     */
     public Student(String major, Date birthDate, String firstName, String lastName) {
         super(birthDate, firstName, lastName);
         this.major = major;

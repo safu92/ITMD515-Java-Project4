@@ -11,15 +11,22 @@ import javax.ejb.Stateless;
 
 /**
  *
- * @author spyrisos
+ * @author smatches
  */
 @Stateless
 public class UserService extends AbstractService<User>{
 
+    /**
+     * constructor
+     */
     public UserService() {
         super(User.class);
     }
 
+    /**
+     * find all method which finds all the users
+     * @return
+     */
     @Override
     public List<User> findAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author spyrisos
+ * @author smatches
  */
 @WebServlet(name = "StudentPortalTestServlet", urlPatterns = {"/studentPortal", "/studentPortal/"})
 public class StudentPortalTestServlet extends HttpServlet {
@@ -40,6 +40,7 @@ public class StudentPortalTestServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        //get all the details of student and print them
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");

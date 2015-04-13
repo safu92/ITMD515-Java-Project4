@@ -18,7 +18,7 @@ import javax.persistence.OneToOne;
 
 /**
  *
- * @author ALLAH
+ * @author smatches
  */
 @Entity
 @NamedQueries({
@@ -27,6 +27,9 @@ import javax.persistence.OneToOne;
     @NamedQuery(name = "Course.findAll", query = "select c from Course c")})
 public class Course extends BaseEntity implements Serializable {
 
+    /**
+     * Constructor
+     */
     public Course() {
     }
     
@@ -37,6 +40,10 @@ public class Course extends BaseEntity implements Serializable {
     @ManyToMany(mappedBy = "courses", cascade = CascadeType.PERSIST)
     private List<Professor> professors = new ArrayList<>();
 
+    /**
+     *
+     * @param professors set the value of the professor
+     */
     public void setProfessors(List<Professor> professors) {
         this.professors = professors;
     }
@@ -47,13 +54,18 @@ public class Course extends BaseEntity implements Serializable {
     
         private String name;
 
+    /**
+     *get professor method
+     * @return the value of the professor
+     */
     public List<Professor> getProfessors() {
         return professors;
     }
 
-        
-        
-
+    /**
+     *get students method
+     * @return the value of students
+     */
     public List<Student> getStudents() {
         return students;
     }
@@ -98,6 +110,11 @@ public class Course extends BaseEntity implements Serializable {
         this.courseId = courseId;
     }
 
+    /**
+     * constructor
+     * @param name the name of the course
+     * @param courseId the id of the course
+     */
     public Course(String name, String courseId) {
         this.name = name;
         this.courseId = courseId;

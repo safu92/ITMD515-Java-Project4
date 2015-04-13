@@ -13,7 +13,7 @@ import javax.persistence.OneToOne;
 
 /**
  *
- * @author ALLAH
+ * @author smatches
  */
 @Entity
 @NamedQueries({
@@ -21,6 +21,9 @@ import javax.persistence.OneToOne;
     @NamedQuery(name = "Job.findAll", query = "select j from Job j")})
 public class Job extends BaseEntity implements Serializable {
 
+    /**
+     *constructor
+     */
     public Job() {
     }
     
@@ -30,6 +33,11 @@ public class Job extends BaseEntity implements Serializable {
        
     private String jobArea;
 
+    /**
+     *constructor
+     * @param student the student object
+     * @param jobArea the area of the job
+     */
     public Job(Student student, String jobArea) {
         this.student = student;
         this.jobArea = jobArea;

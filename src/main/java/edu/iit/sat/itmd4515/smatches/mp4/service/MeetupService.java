@@ -11,15 +11,22 @@ import javax.ejb.Stateless;
 
 /**
  *
- * @author spyrisos
+ * @author smatches
  */
 @Stateless
 public class MeetupService extends AbstractService<Meetup> {
 
+    /**
+     * constructor
+     */
     public MeetupService() {
         super(Meetup.class);
     }
 
+    /**
+     * find all method which finds all the meetup
+     * @return
+     */
     @Override
     public List<Meetup> findAll() {
         return getEntityManager().createNamedQuery("Meetup.findAll").getResultList();

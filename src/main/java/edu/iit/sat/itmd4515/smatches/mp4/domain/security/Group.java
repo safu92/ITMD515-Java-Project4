@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author spyrisos
+ * @author smatches
  */
 @Entity
 @Table(name = "sec_group")
@@ -30,14 +30,26 @@ public class Group implements Serializable {
     @ManyToMany(mappedBy = "groups")
     private List<User> users = new ArrayList<>();
 
+    /**
+     * constructor
+     */
     public Group() {
     }
 
+    /**
+     * constructor
+     * @param groupName name of the group
+     * @param groupDesc description of the group
+     */
     public Group(String groupName, String groupDesc) {
         this.groupName = groupName;
         this.groupDesc = groupDesc;
     }
 
+    /**
+     * adding the user
+     * @param u the value of the user object to add
+     */
     public void addUser(User u) {
         if (!this.users.contains(u)) {
             this.users.add(u);
@@ -83,10 +95,18 @@ public class Group implements Serializable {
         this.groupDesc = groupDesc;
     }
 
+    /**
+     * get users method
+     * @return the value of the users list
+     */
     public List<User> getUsers() {
         return users;
     }
 
+    /**
+     * set users method
+     * @param users the value of the users to set for the group
+     */
     public void setUsers(List<User> users) {
         this.users = users;
     }

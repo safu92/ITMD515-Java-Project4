@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author ALLAH
+ * @author smatches
  */
 @Entity
 @NamedQueries({
@@ -28,6 +28,9 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Meetup.findAll", query = "select m from Meetup m")})
 public class Meetup extends BaseEntity implements Serializable{
 
+    /**
+     *constructor
+     */
     public Meetup() {
     }
     
@@ -80,16 +83,30 @@ public class Meetup extends BaseEntity implements Serializable{
 
     private String topic;
 
+    /**
+     *constructor
+     * @param date the date of the meetup
+     * @param place the place of the meetup
+     * @param topic the topic about the meetup
+     */
     public Meetup(Date date, String place, String topic) {
         this.date = date;
         this.place = place;
         this.topic = topic;
     }
 
+    /**
+     * set professor method
+     * @param professor the value of the professor object
+     */
     public void setProfessor(Professor professor) {
         this.professor = professor;
     }
 
+    /**
+     * set students method
+     * @param students the value of the students list
+     */
     public void setStudents(List<Student> students) {
         this.students = students;
     }
@@ -113,10 +130,18 @@ public class Meetup extends BaseEntity implements Serializable{
         this.topic = topic;
     }
 
+    /**
+     * get method
+     * @return the value of the professor of the meetup
+     */
     public Professor getProfessor() {
         return professor;
     }
 
+    /**
+     * get students
+     * @return the value of the students attending the meetup
+     */
     public List<Student> getStudents() {
         return students;
     }

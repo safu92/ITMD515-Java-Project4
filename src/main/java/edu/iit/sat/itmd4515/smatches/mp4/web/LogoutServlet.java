@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author spyrisos
+ * @author smatches
  */
 @WebServlet(name = "LogoutServlet", urlPatterns = {"/logout","/logout/"})
 public class LogoutServlet extends HttpServlet {
@@ -31,7 +31,7 @@ public class LogoutServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        //remove the user
         request.logout();
         
         response.setContentType("text/html;charset=UTF-8");
